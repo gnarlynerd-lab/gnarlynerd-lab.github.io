@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerard Lynn</title>
+    <meta name="description" content="Gerard Lynn — technologist based in New York.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --fg: #e8e4df;
+            --fg-dim: #8a8580;
+            --fg-faint: #4a4744;
+            --accent: #c4956a;
+            --accent-dim: #8a6a4a;
+            --border: #2a2724;
+            --serif: 'Source Serif 4', Georgia, serif;
+            --mono: 'IBM Plex Mono', 'Menlo', monospace;
+            --max-w: 680px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 17px; }
+
+        body {
+            background: var(--bg);
+            color: var(--fg);
+            font-family: var(--serif);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            padding: 0 1.5rem;
+        }
+
+        .container {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 6rem 0;
+        }
+
+        h1 {
+            font-family: var(--serif);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .capsule {
+            font-size: 1rem;
+            color: var(--fg-dim);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .section-label {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--fg-faint);
+            margin-bottom: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .section-label:first-of-type {
+            margin-top: 0;
+        }
+
+        ul {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        li a {
+            color: var(--fg);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        li a:hover {
+            color: var(--accent);
+            border-color: var(--accent-dim);
+        }
+
+        li .note {
+            color: var(--fg-faint);
+            font-size: 0.9rem;
+        }
+
+        .links {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .links a {
+            color: var(--fg-dim);
+            text-decoration: none;
+            border-bottom: 1px solid var(--fg-faint);
+            transition: color 0.2s;
+        }
+
+        .links a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .container { padding: 4rem 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gerard Lynn</h1>
+
+        <p class="capsule">Engineering manager and technical lead at Penguin Random House since 2012, where I built the company's first production LLM platform on Azure OpenAI and architected unified identity management across multiple enterprise applications. Before that, 15 years of consulting, interaction design, and project management across agencies and enterprise clients including Deutsche Bank, JP Morgan Chase, Ziff-Davis, and the New Museum. Taught interactive design at Cooper Union from 1997 to 2000. MPS from NYU's Interactive Telecommunications Program, BA in English from Kenyon College.</p>
+
+        <div class="section-label">Projects</div>
+        <ul>
+            <li><a href="https://github.com/gnarlynerd-lab/synapticcore">SynapticCore</a> <span class="note">— cognitive memory architecture for AI agents</span></li>
+            <li><a href="https://github.com/gnarlynerd-lab/frisbot">Frisbot</a> <span class="note">— AI companion with Bayesian cognitive architecture</span></li>
+        </ul>
+
+        <div class="section-label">Writing</div>
+        <ul>
+            <li><a href="synapticcore.html">Your AI Has Amnesia About Everything That Matters</a></li>
+        </ul>
+
+        <div class="links">
+            <a href="https://github.com/gnarlynerd-lab">GitHub</a>
+            <a href="https://www.linkedin.com/in/gerard-lynn-04757a3/">LinkedIn</a>
+            <a href="mailto:lynn.gerard@gmail.com">Contact</a>
+        </div>
+    </div>
+</body>
+</html>

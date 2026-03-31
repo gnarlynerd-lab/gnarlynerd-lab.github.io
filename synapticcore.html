@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your AI Has Amnesia About Everything That Matters — Gerard Lynn</title>
+    <meta name="description" content="Every AI memory system stores facts. None of them track how you think.">
+    <meta property="og:title" content="Your AI Has Amnesia About Everything That Matters">
+    <meta property="og:description" content="I went through every AI memory system I could find. They all store facts. None of them track how you think.">
+    <meta property="og:type" content="article">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --fg: #e8e4df;
+            --fg-dim: #8a8580;
+            --fg-faint: #4a4744;
+            --accent: #c4956a;
+            --accent-dim: #8a6a4a;
+            --code-bg: #141210;
+            --border: #2a2724;
+            --serif: 'Source Serif 4', Georgia, serif;
+            --mono: 'IBM Plex Mono', 'Menlo', monospace;
+            --max-w: 680px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 17px; scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--fg);
+            font-family: var(--serif);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            padding: 0 1.5rem;
+        }
+
+        header {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 3rem 0 1.5rem;
+        }
+
+        header a {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--fg-dim);
+            text-decoration: none;
+            letter-spacing: 0.03em;
+            transition: color 0.2s;
+        }
+
+        header a:hover { color: var(--accent); }
+
+        article {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 2rem 0 6rem;
+        }
+
+        article .date {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            color: var(--fg-faint);
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+        }
+
+        article h1 {
+            font-family: var(--serif);
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        article .subtitle {
+            font-size: 1.15rem;
+            color: var(--fg-dim);
+            font-weight: 300;
+            line-height: 1.5;
+            margin-bottom: 3rem;
+        }
+
+        article p { margin-bottom: 1.4rem; }
+
+        article h3 {
+            font-family: var(--mono);
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        article strong { font-weight: 600; color: var(--fg); }
+
+        article a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent-dim);
+            transition: border-color 0.2s;
+        }
+
+        article a:hover { border-color: var(--accent); }
+
+        article code {
+            font-family: var(--mono);
+            font-size: 0.85em;
+            background: var(--code-bg);
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            color: var(--accent);
+        }
+
+        article .diagram {
+            background: var(--code-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.5rem 1.8rem;
+            margin: 1.5rem 0 2rem;
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            line-height: 1.7;
+            color: var(--fg-dim);
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        article .landscape-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            margin: 1.5rem 0 2rem;
+            overflow: hidden;
+        }
+
+        article .landscape-item {
+            background: var(--code-bg);
+            padding: 1rem 1.2rem;
+        }
+
+        article .landscape-item .name {
+            font-family: var(--mono);
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        article .landscape-item .desc {
+            font-size: 0.9rem;
+            color: var(--fg-dim);
+            line-height: 1.5;
+        }
+
+        article .landscape-item .gap {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--fg-faint);
+            margin-top: 0.3rem;
+        }
+
+        article hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 3rem 0;
+        }
+
+        footer {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 2rem 0 4rem;
+            border-top: 1px solid var(--border);
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            color: var(--fg-faint);
+        }
+
+        footer a {
+            color: var(--fg-dim);
+            text-decoration: none;
+            border-bottom: 1px solid var(--fg-faint);
+            transition: color 0.2s;
+        }
+
+        footer a:hover { color: var(--accent); }
+
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            article h1 { font-size: 1.6rem; }
+            article { padding: 1.5rem 0 4rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="/">← Gerard Lynn</a>
+</header>
+
+<article>
+    <div class="date">March 2026</div>
+
+    <h1>Your AI Has Amnesia About Everything That Matters</h1>
+    <div class="subtitle">I went through every AI memory system I could find. They all store facts. None of them track how you think.</div>
+
+    <p>Ask ChatGPT what it remembers about you. You get a list: prefers Python, lives in Brooklyn, works in publishing, likes dark mode. It's a customer profile with better grammar.</p>
+
+    <p>Claude keeps transparent notes organized by project. Gemini timestamps its memories and cites when you said things. These are real design choices. But underneath, they're all doing the same thing. Storing facts about you.</p>
+
+    <p>Here's the thing that bothered me enough to spend a year on it.</p>
+
+    <p>You're renovating your kitchen. You talk to a design agent about style in week one, a budget agent in week two, your partner gets involved in week three, and a shopping agent picks up in week four. By the end of it you've made a dozen decisions, left some things open, and settled some constraints that should bind everything downstream. The budget cap came from the plumbing assessment. The style compromise came from your partner's input. The layout is staying because moving it would blow the budget.</p>
+
+    <p>Any person who'd been in all those conversations would know this. They wouldn't suggest $50K countertops when the cap is $40K. They wouldn't show you pure minimalist options when the style shifted to transitional. They wouldn't reopen the layout question. They'd know what was decided, what was still open, and where the constraints came from.</p>
+
+    <p>No AI memory system can do this. Not because the conversations were lost. They're sitting right there in the history. The problem is that every system treats memory as a pile of things you said rather than a map of how you got to where you are.</p>
+
+    <hr>
+
+    <h3>What I found</h3>
+
+    <p>I went through over 30 commercial products, 15 academic papers, 10 open-source projects, and the patent landscape. It took months. The same pattern kept showing up: every system asks "what does the user know?" Nobody asks "how does the user think?"</p>
+
+    <p>Ben Goertzel put it well in his piece on OpenClaw when he pointed out that LLM agents "can't say 'we tried this approach three times and it failed for the same reason each time, so let's try something structurally different.'" He's right. But the problem goes deeper than that. It's not just that agents can't reason across sessions. It's that no memory system gives them the structure to do so even if they could.</p>
+
+    <p>The open-source ecosystem has converged on a recognizable stack: vector embeddings plus a knowledge graph plus temporal awareness. Mem0, which has 41K stars and raised $24M, overwrites old facts when your view changes. That's it. The old view is gone. Letta/MemGPT lets agents edit their own memory, but the structure never evolves. Zep tracks when facts changed, but tracking that a budget went from $500 to $750 is a completely different problem from tracking that someone went from being a microservices advocate to appreciating monoliths.</p>
+
+    <p>In the academic literature, the pieces exist. Nobody has put them together.</p>
+
+    <div class="landscape-grid">
+        <div class="landscape-item">
+            <div class="name">Hindsight (Dec 2025)</div>
+            <div class="desc">Four separate memory networks including an opinion network. 83.6% on LongMemEval from a 39% baseline. About 40-45% overlap with what I ended up building.</div>
+            <div class="gap">Stores current opinions. Doesn't track how they got there.</div>
+        </div>
+        <div class="landscape-item">
+            <div class="name">SYNAPSE (Jan 2026)</div>
+            <div class="desc">Real spreading activation for LLM memory. +23% on multi-hop reasoning, 95% fewer tokens. The most neuroscience-aligned retrieval in the literature.</div>
+            <div class="gap">Pure retrieval. No user modeling, no belief tracking.</div>
+        </div>
+        <div class="landscape-item">
+            <div class="name">SEEM (2025)</div>
+            <div class="desc">Showed that dual-layer memory captures genuinely different information. Only 0.46 cosine similarity between the two representations. One embedding space can't do both jobs.</div>
+            <div class="gap">No activation, no decision tracking.</div>
+        </div>
+        <div class="landscape-item">
+            <div class="name">A-MEM (NeurIPS 2025)</div>
+            <div class="desc">Zettelkasten-style self-organizing memory. New memories trigger updates to existing ones. Best self-improving organization out there.</div>
+            <div class="gap">Single embedding space. No arc awareness.</div>
+        </div>
+        <div class="landscape-item">
+            <div class="name">DToM-Track (Mar 2026)</div>
+            <div class="desc">Tested whether LLMs can track belief trajectories on their own. 27.7% accuracy on recalling what someone believed before an update. They basically can't.</div>
+            <div class="gap">Not an architecture. But it proves the problem exists.</div>
+        </div>
+    </div>
+
+    <p>To get the full picture you'd have to take SYNAPSE's retrieval, Hindsight's opinion tracking, SEEM's dual layers, and A-MEM's self-organization and merge them. Nobody has tried that. So I did.</p>
+
+    <hr>
+
+    <h3>SynapticCore</h3>
+
+    <p><a href="https://github.com/gnarlynerd-lab/synapticcore">SynapticCore</a> is a cognitive memory architecture that runs as an MCP server. It doesn't store facts. It tracks three things.</p>
+
+    <p><strong>Decisions</strong> with confidence levels that evolve. Tentative becomes held becomes committed. The system keeps the whole chain, not just where you ended up.</p>
+
+    <p><strong>Tradeoffs</strong> between competing priorities. These carry engagement history. How many times they've come up, when, what context. Here's the thing I kept running into in the literature that nobody seems to get: a tradeoff that keeps recurring is not a problem to fix. It's a structural feature of how someone thinks. You keep going back and forth between modern minimalist and farmhouse? Between budget and quality? That tension showing up in conversations 1, 3, and 5 is information, not inconsistency. The system flags these. It doesn't try to resolve them.</p>
+
+    <p><strong>Constraints</strong> are decisions that stuck and now bind everything downstream. They carry records of whether they held under pressure.</p>
+
+    <p>These connect through typed edges into a decision landscape. Retrieval works through spreading activation across this structure. Not just "what's semantically close to the query" but "what's structurally connected in how this person actually navigates decisions."</p>
+
+    <div class="diagram">Query
+  │
+  ▼
+Hybrid Search (semantic + categorical + recency + associative)
+  │
+  ▼  depth="deep"
+Spreading Activation
+  ├── Seeds from results across all memory types
+  ├── Propagates through typed edges (decision↔tradeoff↔constraint)
+  ├── Lateral inhibition for focus
+  └── Returns activation paths showing how it connected query to result</div>
+
+    <p>There's also decision narrative tracking that classifies how thinking changes over time. Reinforcement (same direction, more conviction), shift (reframed but related), reversal (changed your mind). Trajectories get labeled as converging, oscillating, or deepening.</p>
+
+    <hr>
+
+    <h3>What this looks like</h3>
+
+    <p>Back to the kitchen. Week 1, the design agent stores a tentative decision (leaning minimalist) and an active tradeoff (minimalist vs. farmhouse). Week 2, the budget agent reads SynapticCore. It knows the style question is still open. It stores a committed constraint: $40K cap, set by the plumbing assessment. Week 3, your partner weighs in. Style resolves to transitional as a compromise. The system classifies this as a shift from the week 1 decision, not a reversal, because the underlying tradeoff was still active when the compromise landed.</p>
+
+    <p>Week 4, the shopping agent queries with <code>depth="deep"</code> and gets back the budget constraint, the layout decision that established it, the resolved style tradeoff, and the partner input that shifted it. All connected through activation paths. It doesn't suggest $50K countertops. Doesn't show minimalist options. Doesn't ask about the layout. It inherited cognitive state, not task state.</p>
+
+    <p>This is the agent handoff problem nobody has a good answer for right now. Agent A builds up understanding. Agent B takes over. Currently Agent B gets either a transcript dump or a summary. Too much noise or too little structure. Neither preserves what actually matters: what's decided, what's still open, where the constraints came from.</p>
+
+    <hr>
+
+    <h3>The gap</h3>
+
+    <p>Across everything I looked at, no system can take 50 conversations with someone and tell you how their position on a topic shifted, what tensions keep coming back, or what's next to their current thinking that they haven't looked at yet.</p>
+
+    <p>Every memory system treats contradiction as an error to fix by overwriting. Nobody treats it as information.</p>
+
+    <p>I think the reason is not technical. It's a framing problem. The whole field is stuck in the assistant paradigm. Remember that the user likes oat milk. The jump to tracking how someone's thinking about anything evolves over time requires treating the user as someone whose commitments are in motion, not a profile to keep updated.</p>
+
+    <p>SynapticCore is open-source under Apache 2.0. Six MCP tools, dual embeddings, spreading activation, typed memory objects, decision narrative tracking. It's been running in production as an MCP server. The <a href="https://github.com/gnarlynerd-lab/synapticcore">code</a> and the <a href="https://github.com/gnarlynerd-lab/synapticcore/blob/main/docs/competitive_landscape.md">competitive analysis</a> are on GitHub.</p>
+
+</article>
+
+<footer>
+    <a href="/">Gerard Lynn</a>
+</footer>
+
+</body>
+</html>
